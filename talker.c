@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
 	hints.ai_family = AF_UNSPEC; 		/* Allow IPv4 or IPv6	*/
 	hints.ai_socktype = SOCK_DGRAM;		/* Datagram socket	*/
 	hints.ai_flags = 0;
-	hints.ai_protocol = 0;			/* Any protocol		*/
+	hints.ai_protocol = IPPROTO_UDP;			/* Send UDP protocol		*/
 
 	s = getaddrinfo(argv[1], argv[2], &hints, &results);
 	if(s != 0){
