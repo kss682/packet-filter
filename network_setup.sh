@@ -2,7 +2,7 @@
 
 check_namespace(){
     local ns=$1
-    if ! ip netns list | grep -q '$ns'; then
+    if ip netns list | grep -q '$ns'; then
         echo "$ns namespace not created"
         exit 1
     fi
@@ -25,13 +25,13 @@ setup_interfaces()
 {
     ip link add veth-listener type veth peer name veth-talker
 
-    if ! ip link | grep -q 'veth-listener@'; then
+    if ip link | grep -q 'veth-listener@'; then
         echo "veth-listener interface not created"
         exit 1
     fi
     echo "veth-listener interface created"
 
-    if ! ip link | grep -q "veth-talker@"; then
+    if ip link | grep -q "veth-talker@"; then
         echo "veth-talker interface not created"
         exit 1
     fi
